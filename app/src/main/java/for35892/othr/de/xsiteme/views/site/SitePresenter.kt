@@ -1,6 +1,8 @@
 package for35892.othr.de.xsiteme.views.site
 
 import android.content.Intent
+import android.widget.CheckBox
+import for35892.othr.de.xsiteme.R
 import for35892.othr.de.xsiteme.helpers.showImagePicker
 import for35892.othr.de.xsiteme.main.MainApp
 import for35892.othr.de.xsiteme.models.Location
@@ -16,6 +18,7 @@ class SitePresenter(val activity: SiteView) {
 
     var site = SiteModel()
     var location = Location(52.245696, -7.139102, 15f)
+    var visited = true
     var app: MainApp
     var edit = false;
 
@@ -24,6 +27,8 @@ class SitePresenter(val activity: SiteView) {
         if (activity.intent.hasExtra("site_edit")) {
             edit = true
             site = activity.intent.extras.getParcelable<SiteModel>("site_edit")
+            visited = site.visited
+            activity.findViewById<CheckBox>(R.id.checkBox).isChecked = visited
             activity.showSite(site)
         }
     }
@@ -58,7 +63,14 @@ class SitePresenter(val activity: SiteView) {
             location.lng = site.lng
             location.zoom = site.zoom
         }
-        activity.startActivityForResult(activity.intentFor<EditLocationView>().putExtra("location", location), LOCATION_REQUEST)
+        activity.startActivityForResult(
+            activity.intentFor<EditLocationView>().putExtra("location", location),
+            LOCATION_REQUEST
+        )
+    }
+
+    fun doChangeVisited() {
+        site.visited = !visited
     }
 
     fun doActivityResult(requestCode: Int, resultCode: Int, data: Intent) {

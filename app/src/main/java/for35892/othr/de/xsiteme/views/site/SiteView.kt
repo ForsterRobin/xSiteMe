@@ -13,7 +13,6 @@ import org.jetbrains.anko.toast
 import for35892.othr.de.xsiteme.R
 
 
-
 class SiteView : AppCompatActivity(), AnkoLogger {
 
     lateinit var presenter: SitePresenter
@@ -38,6 +37,8 @@ class SiteView : AppCompatActivity(), AnkoLogger {
         chooseImage.setOnClickListener { presenter.doSelectImage() }
 
         siteLocation.setOnClickListener { presenter.doSetLocation() }
+
+        checkBox.setOnClickListener { presenter.doChangeVisited() }
     }
 
     fun showSite(site: SiteModel) {
