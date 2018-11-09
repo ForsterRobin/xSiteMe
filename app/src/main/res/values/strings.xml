@@ -19,4 +19,5 @@
     <string name="title_activity_maps">Map</string>
     <string name="title_activity_site_maps">Map of all Sites</string>
     <string name="title_activity_siteList">Sites</string>
+    <string name="title_activity_site">Add Site</string>
 </resources>
