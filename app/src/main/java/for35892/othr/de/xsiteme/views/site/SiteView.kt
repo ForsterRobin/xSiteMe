@@ -65,10 +65,15 @@ class SiteView : AppCompatActivity(), AnkoLogger {
             R.id.item_delete -> {
                 presenter.doDelete()
             }
-            R.id.item_cancel -> {
-                presenter.doCancel()
+            R.id.item_save -> {
+                if (siteTitle.text.toString().isEmpty()) {
+                    toast(R.string.enter_site_title)
+                } else {
+                    presenter.doAddOrSave(siteTitle.text.toString(), description.text.toString())
+                }
             }
         }
+
         return super.onOptionsItemSelected(item)
     }
 
@@ -77,5 +82,9 @@ class SiteView : AppCompatActivity(), AnkoLogger {
         if (data != null) {
             presenter.doActivityResult(requestCode, resultCode, data)
         }
+    }
+
+    override fun onBackPressed() {
+        presenter.doCancel()
     }
 }

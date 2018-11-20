@@ -8,8 +8,10 @@
     <string name="button_location">Set Location</string>
 
     <string name="menu_addSite">Add</string>
+    <string name="menu_map">Map</string>
     <string name="menu_cancelSite">Cancel</string>
     <string name="menu_deleteSite">Delete</string>
+    <string name="menu_saveSite">Save</string>
 
     <string name="enter_site_title"> Please enter a Site Title </string>
     <string name="save_site"> Save Site </string>
