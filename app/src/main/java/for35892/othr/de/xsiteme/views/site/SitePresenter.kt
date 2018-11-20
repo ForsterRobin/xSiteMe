@@ -17,7 +17,7 @@ class SitePresenter(val activity: SiteView) {
     val LOCATION_REQUEST = 2
 
     var site = SiteModel()
-    var location = Location(52.245696, -7.139102, 15f)
+    var location = Location(49.021273, 12.098629, 15f)
     var visited = true
     var app: MainApp
     var edit = false;

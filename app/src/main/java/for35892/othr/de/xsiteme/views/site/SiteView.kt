@@ -53,7 +53,10 @@ class SiteView : AppCompatActivity(), AnkoLogger {
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_site, menu)
-        if (presenter.edit) menu.getItem(0).setVisible(true)
+        if (presenter.edit) {
+            menu.getItem(0).setVisible(true)
+            toolbarAdd.title = getString(R.string.title_activity_site_edit)
+        }
         return super.onCreateOptionsMenu(menu)
     }
 
