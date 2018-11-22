@@ -77,7 +77,6 @@ class SitePresenter(val activity: SiteView) {
         when (requestCode) {
             IMAGE_REQUEST -> {
                 site.image = data.data.toString()
-                activity.showSite(site)
             }
             LOCATION_REQUEST -> {
                 location = data.extras.getParcelable<Location>("location")

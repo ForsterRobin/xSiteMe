@@ -26,14 +26,6 @@ class SiteView : AppCompatActivity(), AnkoLogger {
 
         presenter = SitePresenter(this)
 
-        btnAdd.setOnClickListener {
-            if (siteTitle.text.toString().isEmpty()) {
-                toast(R.string.enter_site_title)
-            } else {
-                presenter.doAddOrSave(siteTitle.text.toString(), description.text.toString())
-            }
-        }
-
         chooseImage.setOnClickListener { presenter.doSelectImage() }
 
         siteLocation.setOnClickListener { presenter.doSetLocation() }
@@ -48,7 +40,6 @@ class SiteView : AppCompatActivity(), AnkoLogger {
         if (site.image != null) {
             chooseImage.setText(R.string.change_site_image)
         }
-        btnAdd.setText(R.string.save_site)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

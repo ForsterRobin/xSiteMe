@@ -10,9 +10,9 @@ data class SiteModel(
     var description: String = "",
     var visited: Boolean = false,
     var image: String = "",
-    var lat: Double = 0.0,
-    var lng: Double = 0.0,
-    var zoom: Float = 0f
+    var lat: Double = 49.021273,
+    var lng: Double = 12.098629,
+    var zoom: Float = 15f
 ) : Parcelable
 
 @Parcelize
