@@ -12,6 +12,7 @@
     <string name="menu_cancelSite">Cancel</string>
     <string name="menu_deleteSite">Delete</string>
     <string name="menu_saveSite">Save</string>
+    <string name="menu_back">Back</string>
 
     <string name="enter_site_title"> Please enter a Site Title </string>
     <string name="save_site"> Save Site </string>
@@ -24,5 +25,12 @@
     <string name="title_activity_siteList">Sites</string>
     <string name="title_activity_site_add">Add Site</string>
     <string name="title_activity_site_edit">Edit Site</string>
+    <string name="title_activity_settings">Settings</string>
+
+    <string name="email">Email: </string>
+    <string name="password">Password: </string>
+    <string name="statistics">Statistics: </string>
+    <string name="numberofsites">Total umber of Sites: </string>
+    <string name="numbervisited">Number of visted Sites: </string>
 
 </resources>

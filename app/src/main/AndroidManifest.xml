@@ -32,6 +32,10 @@
                 android:name=".views.map.SiteMapsView"
                 android:label="@string/title_activity_site_maps"
                 android:theme="@style/AppTheme" />
+        <activity
+                android:name=".views.settings.SettingsView"
+                android:label="@string/title_activity_settings"
+                android:theme="@style/AppTheme" />
 
         <meta-data
                 android:name="com.google.android.geo.API_KEY"

@@ -35,6 +35,7 @@ class SiteListView : AppCompatActivity(), SiteListener {
         when (item?.itemId) {
             R.id.item_add -> presenter.doAddSite()
             R.id.item_map -> presenter.doShowSitesMap()
+            R.id.item_settings -> presenter.doShowSettings()
         }
         return super.onOptionsItemSelected(item)
     }
