@@ -36,6 +36,7 @@ class SitePresenter(val activity: SiteView) {
     fun doAddOrSave(title: String, description: String) {
         site.title = title
         site.description = description
+        site.visited = visited
         if (edit) {
             app.sites.update(site)
         } else {
