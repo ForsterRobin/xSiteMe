@@ -5,6 +5,6 @@
     <item
             android:id="@+id/item_back"
             android:title="@string/menu_back"
-            android:icon="@android:drawable/ic_media_rew"
+            android:icon="@drawable/ic_menu_back"
             app:showAsAction="always"/>
 </menu>
