@@ -1,7 +1,6 @@
 package for35892.othr.de.xsiteme.views.site
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -11,9 +10,10 @@ import kotlinx.android.synthetic.main.activity_site.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.toast
 import for35892.othr.de.xsiteme.R
+import for35892.othr.de.xsiteme.views.BaseView
 
 
-class SiteView : AppCompatActivity(), AnkoLogger {
+class SiteView : BaseView(), AnkoLogger {
 
     lateinit var presenter: SitePresenter
     var site = SiteModel()
@@ -24,7 +24,7 @@ class SiteView : AppCompatActivity(), AnkoLogger {
         toolbarAdd.title = title
         setSupportActionBar(toolbarAdd)
 
-        presenter = SitePresenter(this)
+        presenter = initPresenter (SitePresenter(this)) as SitePresenter
 
         chooseImage.setOnClickListener { presenter.doSelectImage() }
 
@@ -33,7 +33,7 @@ class SiteView : AppCompatActivity(), AnkoLogger {
         checkBox.setOnClickListener { presenter.doChangeVisited() }
     }
 
-    fun showSite(site: SiteModel) {
+    override fun showSite(site: SiteModel) {
         siteTitle.setText(site.title)
         description.setText(site.description)
         siteImage.setImageBitmap(readImageFromPath(this, site.image))

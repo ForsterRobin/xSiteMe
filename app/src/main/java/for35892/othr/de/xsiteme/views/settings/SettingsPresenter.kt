@@ -1,27 +1,22 @@
 package for35892.othr.de.xsiteme.views.settings
 
-import for35892.othr.de.xsiteme.main.MainApp
+import for35892.othr.de.xsiteme.views.BasePresenter
+import for35892.othr.de.xsiteme.views.BaseView
 import kotlinx.android.synthetic.main.activity_settings.*
 
-class SettingsPresenter(val activity: SettingsView) {
-
-    var app: MainApp
-
-    init {
-        app = activity.application as MainApp
-    }
+class SettingsPresenter(view: BaseView): BasePresenter(view) {
 
     fun doGoBack() {
-        activity.finish()
+        view?.finish()
     }
 
     fun doShowNumberOfSites() {
         var count = app.sites.findAll().count()
-        activity.numberofsitesvalue.text = count.toString()
+        view!!.numberofsitesvalue.text = count.toString()
     }
 
     fun doShowNumberVisited() {
         var count = app.sites.findAll().filter { it.visited }.count()
-        activity.numbervisitedvalue.text = count.toString()
+        view!!.numbervisitedvalue.text = count.toString()
     }
 }

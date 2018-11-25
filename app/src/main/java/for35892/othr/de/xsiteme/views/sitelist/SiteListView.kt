@@ -1,28 +1,32 @@
 package for35892.othr.de.xsiteme.views.sitelist
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.*
 import kotlinx.android.synthetic.main.activity_site_list.*
 import for35892.othr.de.xsiteme.R
 import for35892.othr.de.xsiteme.models.SiteModel
+import for35892.othr.de.xsiteme.views.BaseView
 
-class SiteListView : AppCompatActivity(), SiteListener {
+class SiteListView : BaseView(), SiteListener {
 
     lateinit var presenter: SiteListPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_site_list)
-        toolbarMain.title = title
-        setSupportActionBar(toolbarMain)
+        init(toolbarMain)
 
-        presenter = SiteListPresenter(this)
+        presenter = initPresenter(SiteListPresenter(this)) as SiteListPresenter
+
         val layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
-        recyclerView.adapter = SiteAdapter(presenter.getSites(), this)
+        presenter.loadSites()
+    }
+
+    override fun showSites(placemarks: List<SiteModel>) {
+        recyclerView.adapter = SiteAdapter(placemarks, this)
         recyclerView.adapter?.notifyDataSetChanged()
     }
 
@@ -45,7 +49,7 @@ class SiteListView : AppCompatActivity(), SiteListener {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        recyclerView.adapter?.notifyDataSetChanged()
+        presenter.loadSites()
         super.onActivityResult(requestCode, resultCode, data)
     }
 }

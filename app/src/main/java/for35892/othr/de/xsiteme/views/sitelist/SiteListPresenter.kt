@@ -1,38 +1,30 @@
 package for35892.othr.de.xsiteme.views.sitelist
 
-import for35892.othr.de.xsiteme.main.MainApp
 import for35892.othr.de.xsiteme.models.SiteModel
-import for35892.othr.de.xsiteme.views.map.SiteMapsView
-import for35892.othr.de.xsiteme.views.settings.SettingsView
-import for35892.othr.de.xsiteme.views.site.SiteView
-import org.jetbrains.anko.intentFor
-import org.jetbrains.anko.startActivity
-import org.jetbrains.anko.startActivityForResult
+import for35892.othr.de.xsiteme.views.BasePresenter
+import for35892.othr.de.xsiteme.views.BaseView
+import for35892.othr.de.xsiteme.views.VIEW
 
 
-class SiteListPresenter(val activity: SiteListView) {
-
-    var app: MainApp
-
-    init {
-        app = activity.application as MainApp
-    }
-
-    fun getSites() = app.sites.findAll()
+class SiteListPresenter(view: BaseView): BasePresenter(view) {
 
     fun doAddSite() {
-        activity.startActivityForResult<SiteView>(0)
+        view?.navigateTo(VIEW.SITE)
     }
 
     fun doEditSite(site: SiteModel) {
-        activity.startActivityForResult(activity.intentFor<SiteView>().putExtra("site_edit", site), 0)
+        view?.navigateTo(VIEW.SITE, 0, "site_edit", site)
     }
 
     fun doShowSitesMap() {
-        activity.startActivity<SiteMapsView>()
+        view?.navigateTo(VIEW.MAP)
     }
 
     fun doShowSettings() {
-        activity.startActivity<SettingsView>()
+        view?.navigateTo(VIEW.SETTINGS)
+    }
+
+    fun loadSites() {
+        view?.showSites(app.sites.findAll())
     }
 }

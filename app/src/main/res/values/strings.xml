@@ -30,7 +30,7 @@
     <string name="email">Email: </string>
     <string name="password">Password: </string>
     <string name="statistics">Statistics: </string>
-    <string name="numberofsites">Total umber of Sites: </string>
+    <string name="numberofsites">Total number of Sites: </string>
     <string name="numbervisited">Number of visted Sites: </string>
 
 </resources>

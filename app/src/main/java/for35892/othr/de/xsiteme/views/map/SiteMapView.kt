@@ -1,19 +1,14 @@
 package for35892.othr.de.xsiteme.views.map
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
-import com.google.android.gms.maps.model.MarkerOptions
 import for35892.othr.de.xsiteme.R
+import for35892.othr.de.xsiteme.views.BaseView
 import kotlinx.android.synthetic.main.activity_site_maps.*
 import kotlinx.android.synthetic.main.content_site_maps.*
-import for35892.othr.de.xsiteme.helpers.readImageFromPath
-import for35892.othr.de.xsiteme.main.MainApp
 
-class SiteMapsView : AppCompatActivity(), GoogleMap.OnMarkerClickListener {
+class SiteMapView: BaseView(), GoogleMap.OnMarkerClickListener {
 
     lateinit var presenter: SiteMapPresenter
 

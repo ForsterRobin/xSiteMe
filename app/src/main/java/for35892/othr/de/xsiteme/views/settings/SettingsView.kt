@@ -1,19 +1,15 @@
 package for35892.othr.de.xsiteme.views.settings
 
-import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import for35892.othr.de.xsiteme.R
-import for35892.othr.de.xsiteme.helpers.readImageFromPath
 import for35892.othr.de.xsiteme.models.SiteModel
+import for35892.othr.de.xsiteme.views.BaseView
 import kotlinx.android.synthetic.main.activity_settings.*
-import kotlinx.android.synthetic.main.activity_site.*
 import org.jetbrains.anko.AnkoLogger
-import org.jetbrains.anko.toast
 
-class SettingsView : AppCompatActivity(), AnkoLogger {
+class SettingsView : BaseView(), AnkoLogger {
     lateinit var presenter: SettingsPresenter
     var site = SiteModel()
 

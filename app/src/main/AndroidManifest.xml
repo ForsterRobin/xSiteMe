@@ -29,7 +29,7 @@
                 android:name=".views.editlocation.EditLocationView"
                 android:label="@string/title_activity_maps" />
         <activity
-                android:name=".views.map.SiteMapsView"
+                android:name=".views.map.SiteMapView"
                 android:label="@string/title_activity_site_maps"
                 android:theme="@style/AppTheme" />
         <activity

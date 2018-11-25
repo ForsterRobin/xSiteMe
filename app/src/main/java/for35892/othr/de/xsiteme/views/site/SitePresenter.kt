@@ -7,29 +7,29 @@ import for35892.othr.de.xsiteme.helpers.showImagePicker
 import for35892.othr.de.xsiteme.main.MainApp
 import for35892.othr.de.xsiteme.models.Location
 import for35892.othr.de.xsiteme.models.SiteModel
-import for35892.othr.de.xsiteme.views.editlocation.EditLocationView
-import org.jetbrains.anko.intentFor
+import for35892.othr.de.xsiteme.views.BasePresenter
+import for35892.othr.de.xsiteme.views.BaseView
+import for35892.othr.de.xsiteme.views.VIEW
 
 
-class SitePresenter(val activity: SiteView) {
+class SitePresenter(view: BaseView): BasePresenter(view) {
 
     val IMAGE_REQUEST = 1
     val LOCATION_REQUEST = 2
 
     var site = SiteModel()
-    var location = Location(49.021273, 12.098629, 15f)
+    var defaultLocation = Location(49.021273, 12.098629, 15f)
     var visited = true
-    var app: MainApp
     var edit = false;
 
     init {
-        app = activity.application as MainApp
-        if (activity.intent.hasExtra("site_edit")) {
+        app = view.application as MainApp
+        if (view.intent.hasExtra("site_edit")) {
             edit = true
-            site = activity.intent.extras.getParcelable<SiteModel>("site_edit")
+            site = view.intent.extras.getParcelable<SiteModel>("site_edit")
             visited = site.visited
-            activity.findViewById<CheckBox>(R.id.checkBox).isChecked = visited
-            activity.showSite(site)
+            view.findViewById<CheckBox>(R.id.checkBox).isChecked = visited
+            view.showSite(site)
         }
     }
 
@@ -42,45 +42,42 @@ class SitePresenter(val activity: SiteView) {
         } else {
             app.sites.create(site)
         }
-        activity.finish()
+        view?.finish()
     }
 
     fun doCancel() {
-        activity.finish()
+        view?.finish()
     }
 
     fun doDelete() {
         app.sites.delete(site)
-        activity.finish()
+        view?.finish()
     }
 
     fun doSelectImage() {
-        showImagePicker(activity, IMAGE_REQUEST)
+        showImagePicker(view!!, IMAGE_REQUEST)
     }
 
     fun doSetLocation() {
-        if (site.zoom != 0f) {
-            location.lat = site.lat
-            location.lng = site.lng
-            location.zoom = site.zoom
+
+        if (!edit) {
+            view?.navigateTo(VIEW.LOCATION, LOCATION_REQUEST, "location", defaultLocation)
+        } else {
+            view?.navigateTo(VIEW.LOCATION, LOCATION_REQUEST, "location", Location(site.lat, site.lng, site.zoom))
         }
-        activity.startActivityForResult(
-            activity.intentFor<EditLocationView>().putExtra("location", location),
-            LOCATION_REQUEST
-        )
     }
 
     fun doChangeVisited() {
         site.visited = !visited
     }
 
-    fun doActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
+    override fun doActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
         when (requestCode) {
             IMAGE_REQUEST -> {
                 site.image = data.data.toString()
             }
             LOCATION_REQUEST -> {
-                location = data.extras.getParcelable<Location>("location")
+                val location = data.extras.getParcelable<Location>("location")
                 site.lat = location.lat
                 site.lng = location.lng
                 site.zoom = location.zoom
