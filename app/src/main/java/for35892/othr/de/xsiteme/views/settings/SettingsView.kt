@@ -21,6 +21,7 @@ class SettingsView : BaseView(), AnkoLogger {
 
         presenter = SettingsPresenter(this)
 
+        presenter.doShowLoginData()
         presenter.doShowNumberOfSites()
         presenter.doShowNumberVisited()
     }

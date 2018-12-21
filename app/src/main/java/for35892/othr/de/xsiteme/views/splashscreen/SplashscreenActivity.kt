@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import for35892.othr.de.xsiteme.R
+import for35892.othr.de.xsiteme.views.login.LoginView
 import for35892.othr.de.xsiteme.views.sitelist.SiteListPresenter
 import for35892.othr.de.xsiteme.views.sitelist.SiteListView
 
@@ -18,7 +19,7 @@ class SplashscreenActivity : AppCompatActivity() {
                 try{
                     Thread.sleep(5000)
 
-                    val intent = Intent(baseContext, SiteListView::class.java)
+                    val intent = Intent(baseContext, LoginView::class.java)
                     startActivity(intent)
                 } catch (e: Exception) {
                     e.printStackTrace()

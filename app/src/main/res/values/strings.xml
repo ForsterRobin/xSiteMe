@@ -32,5 +32,10 @@
     <string name="statistics">Statistics: </string>
     <string name="numberofsites">Total number of Sites: </string>
     <string name="numbervisited">Number of visted Sites: </string>
+    <string name="hint_emailAdress">Enter your Email</string>
+    <string name="hint_password">Enter your password</string>
+    <string name="button_login">Login</string>
+    <string name="title_activity_login">Login</string>
+    <string name="loginFailed">Login failed, please try again.</string>
 
 </resources>

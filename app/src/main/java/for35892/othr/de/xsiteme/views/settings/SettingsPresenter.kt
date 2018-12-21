@@ -10,6 +10,11 @@ class SettingsPresenter(view: BaseView): BasePresenter(view) {
         view?.finish()
     }
 
+    fun doShowLoginData() {
+        view!!.emailvalue.text = app.emailAdress
+        view!!.passwordvalue.text = app.password
+    }
+
     fun doShowNumberOfSites() {
         var count = app.sites.findAll().count()
         view!!.numberofsitesvalue.text = count.toString()

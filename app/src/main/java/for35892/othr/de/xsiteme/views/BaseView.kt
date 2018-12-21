@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import for35892.othr.de.xsiteme.models.SiteModel
 import for35892.othr.de.xsiteme.views.editlocation.EditLocationView
+import for35892.othr.de.xsiteme.views.login.LoginView
 import for35892.othr.de.xsiteme.views.map.SiteMapView
 import for35892.othr.de.xsiteme.views.settings.SettingsView
 import for35892.othr.de.xsiteme.views.site.SiteView
@@ -16,7 +17,7 @@ val IMAGE_REQUEST = 1
 val LOCATION_REQUEST = 2
 
 enum class VIEW {
-    LOCATION, SITE, MAP, LIST, SETTINGS
+    LOCATION, SITE, MAP, LIST, SETTINGS, LOGIN
 }
 
 open abstract class BaseView() : AppCompatActivity(), AnkoLogger {
@@ -31,6 +32,7 @@ open abstract class BaseView() : AppCompatActivity(), AnkoLogger {
             VIEW.MAP -> intent = Intent(this, SiteMapView::class.java)
             VIEW.LIST -> intent = Intent(this, SiteListView::class.java)
             VIEW.SETTINGS -> intent = Intent(this, SettingsView::class.java)
+            VIEW.LOGIN -> intent = Intent(this, LoginView::class.java)
         }
         if (key != "") {
             intent.putExtra(key, value)
