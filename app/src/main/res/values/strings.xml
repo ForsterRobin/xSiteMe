@@ -13,6 +13,8 @@
     <string name="menu_deleteSite">Delete</string>
     <string name="menu_saveSite">Save</string>
     <string name="menu_back">Back</string>
+    <string name="menu_logout">Logout</string>
+    <string name="menu_settings">Settings</string>
 
     <string name="enter_site_title"> Please enter a Site Title </string>
     <string name="save_site"> Save Site </string>

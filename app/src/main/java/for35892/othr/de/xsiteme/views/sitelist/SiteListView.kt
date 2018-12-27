@@ -40,6 +40,7 @@ class SiteListView : BaseView(), SiteListener {
             R.id.item_add -> presenter.doAddSite()
             R.id.item_map -> presenter.doShowSitesMap()
             R.id.item_settings -> presenter.doShowSettings()
+            R.id.item_logout -> presenter.doShowLogin()
         }
         return super.onOptionsItemSelected(item)
     }
@@ -51,5 +52,9 @@ class SiteListView : BaseView(), SiteListener {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         presenter.loadSites()
         super.onActivityResult(requestCode, resultCode, data)
+    }
+
+    override fun onBackPressed() {
+
     }
 }
