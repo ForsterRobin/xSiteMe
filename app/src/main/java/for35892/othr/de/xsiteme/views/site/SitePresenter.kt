@@ -28,9 +28,9 @@ class SitePresenter(view: BaseView): BasePresenter(view) {
             edit = true
             site = view.intent.extras.getParcelable<SiteModel>("site_edit")
             visited = site.visited
-            view.findViewById<CheckBox>(R.id.checkBox).isChecked = visited
             view.showSite(site)
         }
+        view.findViewById<CheckBox>(R.id.checkBox).isChecked = visited
     }
 
     fun doAddOrSave(title: String, description: String) {
