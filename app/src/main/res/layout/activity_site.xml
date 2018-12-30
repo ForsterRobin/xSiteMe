@@ -63,15 +63,25 @@
                 app:layout_constraintTop_toBottomOf="@+id/siteTitle"/>
 
         <CheckBox
-                android:id="@+id/checkBox"
+                android:id="@+id/checkBoxVisited"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
                 android:text="@string/check_box_visited"
+                app:layout_constraintStart_toStartOf="@+id/description"
+                app:layout_constraintTop_toBottomOf="@+id/description"/>
+
+        <CheckBox
+                android:id="@+id/checkBoxFavourite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:text="@string/check_box_favourite"
+                app:layout_constraintStart_toEndOf="@id/checkBoxVisited"
                 app:layout_constraintTop_toBottomOf="@+id/description"/>
 
         <Button
@@ -81,7 +91,7 @@
                 android:layout_marginTop="8dp"
                 android:text="@string/button_addImage"
                 app:layout_constraintStart_toStartOf="@+id/description"
-                app:layout_constraintTop_toBottomOf="@+id/checkBox"/>
+                app:layout_constraintTop_toBottomOf="@+id/checkBoxVisited"/>
 
         <Button
                 android:id="@+id/siteLocation"
@@ -94,7 +104,7 @@
                 app:layout_constraintEnd_toEndOf="@+id/description"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toEndOf="@+id/chooseImage"
-                app:layout_constraintTop_toBottomOf="@+id/checkBox"/>
+                app:layout_constraintTop_toBottomOf="@+id/checkBoxVisited"/>
 
         <ImageView
                 android:id="@+id/siteImage"

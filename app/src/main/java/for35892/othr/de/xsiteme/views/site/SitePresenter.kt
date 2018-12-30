@@ -19,7 +19,8 @@ class SitePresenter(view: BaseView): BasePresenter(view) {
 
     var site = SiteModel()
     var defaultLocation = Location(49.021273, 12.098629, 15f)
-    var visited = true
+    var visited = false
+    var favourite = false
     var edit = false;
 
     init {
@@ -28,15 +29,18 @@ class SitePresenter(view: BaseView): BasePresenter(view) {
             edit = true
             site = view.intent.extras.getParcelable<SiteModel>("site_edit")
             visited = site.visited
+            favourite = site.favourite
             view.showSite(site)
         }
-        view.findViewById<CheckBox>(R.id.checkBox).isChecked = visited
+        view.findViewById<CheckBox>(R.id.checkBoxVisited).isChecked = visited
+        view.findViewById<CheckBox>(R.id.checkBoxFavourite).isChecked = favourite
     }
 
     fun doAddOrSave(title: String, description: String) {
         site.title = title
         site.description = description
         site.visited = visited
+        site.favourite = favourite
         if (edit) {
             app.sites.update(site)
         } else {
@@ -68,7 +72,13 @@ class SitePresenter(view: BaseView): BasePresenter(view) {
     }
 
     fun doChangeVisited() {
-        site.visited = !visited
+        visited = !visited
+        site.visited = visited
+    }
+
+    fun doChangeFavourite() {
+        favourite = !favourite
+        site.favourite = favourite
     }
 
     override fun doActivityResult(requestCode: Int, resultCode: Int, data: Intent) {

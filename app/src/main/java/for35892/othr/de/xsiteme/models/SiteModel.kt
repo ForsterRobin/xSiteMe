@@ -9,6 +9,7 @@ data class SiteModel(
     var title: String = "",
     var description: String = "",
     var visited: Boolean = false,
+    var favourite: Boolean = false,
     var image: String = "",
     var lat: Double = 49.021273,
     var lng: Double = 12.098629,

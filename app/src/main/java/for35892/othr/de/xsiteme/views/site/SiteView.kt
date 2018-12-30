@@ -30,7 +30,9 @@ class SiteView : BaseView(), AnkoLogger {
 
         siteLocation.setOnClickListener { presenter.doSetLocation() }
 
-        checkBox.setOnClickListener { presenter.doChangeVisited() }
+        checkBoxVisited.setOnClickListener { presenter.doChangeVisited() }
+
+        checkBoxFavourite.setOnClickListener { presenter.doChangeFavourite() }
     }
 
     override fun showSite(site: SiteModel) {
