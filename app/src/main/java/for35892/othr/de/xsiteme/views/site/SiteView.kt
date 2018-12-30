@@ -23,6 +23,7 @@ class SiteView : BaseView(), AnkoLogger {
         setContentView(R.layout.activity_site)
         toolbarAdd.title = title
         setSupportActionBar(toolbarAdd)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         presenter = initPresenter (SitePresenter(this)) as SitePresenter
 

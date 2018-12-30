@@ -16,6 +16,7 @@ class SiteMapView: BaseView(), GoogleMap.OnMarkerClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_site_maps)
         setSupportActionBar(toolbarMaps)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync {
