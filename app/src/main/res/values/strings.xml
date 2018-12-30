@@ -41,5 +41,6 @@
     <string name="numberofsites">Total number of Sites: </string>
     <string name="numbervisited">Number of visted Sites: </string>
     <string name="loginFailed">Login failed, please try again.</string>
+    <string name="button_signup">sign up</string>
 
 </resources>

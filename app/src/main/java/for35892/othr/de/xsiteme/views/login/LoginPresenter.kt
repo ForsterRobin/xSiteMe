@@ -1,30 +1,45 @@
 package for35892.othr.de.xsiteme.views.login
 
-import android.content.Intent
-import android.view.View
-import android.widget.CheckBox
-import for35892.othr.de.xsiteme.R
-import for35892.othr.de.xsiteme.helpers.showImagePicker
-import for35892.othr.de.xsiteme.main.MainApp
-import for35892.othr.de.xsiteme.models.Location
-import for35892.othr.de.xsiteme.models.SiteModel
-import for35892.othr.de.xsiteme.views.*
-import kotlinx.android.synthetic.main.activity_login.*
+import com.google.firebase.auth.FirebaseAuth
+import for35892.othr.de.xsiteme.views.BasePresenter
+import for35892.othr.de.xsiteme.views.BaseView
+import for35892.othr.de.xsiteme.views.VIEW
+import org.jetbrains.anko.toast
 
 class LoginPresenter(view: BaseView) : BasePresenter(view) {
-    init {
-        app = view.application as MainApp
+
+    var auth: FirebaseAuth = FirebaseAuth.getInstance()
+
+    fun doLogin(email: String, password: String) {
+        if (email.isEmpty() || password.isEmpty()) {
+            view?.toast("Sign Up Failed: Email and password must not be empty")
+        } else {
+            view?.showProgress()
+
+            auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(view!!) { task ->
+                if (task.isSuccessful) {
+                    view?.navigateTo(VIEW.LIST)
+                } else {
+                    view?.toast("Sign Up Failed: ${task.exception?.message}")
+                }
+                view?.hideProgress()
+            }
+        }
     }
 
-    fun doLogin(emailAdress: String, password: String) {
-
-
-        if(password == "pw123") { //TODO: serious pw check needs to be added
-            app.emailAdress = emailAdress
-            app.password = password
-            view?.navigateTo(VIEW.LIST, 0, "", null)
+    fun doSignUp(email: String, password: String) {
+        if (email.isEmpty() || password.isEmpty()) {
+            view?.toast("Sign Up Failed: Email and password must not be empty")
         } else {
-            view!!.loginFailed.visibility = View.VISIBLE;
+            view?.showProgress()
+            auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(view!!) { task ->
+                if (task.isSuccessful) {
+                    view?.navigateTo(VIEW.LIST)
+                } else {
+                    view?.toast("Sign Up Failed: ${task.exception?.message}")
+                }
+                view?.hideProgress()
+            }
         }
     }
 }

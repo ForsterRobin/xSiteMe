@@ -40,7 +40,7 @@ class SiteListView : BaseView(), SiteListener {
             R.id.item_add -> presenter.doAddSite()
             R.id.item_map -> presenter.doShowSitesMap()
             R.id.item_settings -> presenter.doShowSettings()
-            R.id.item_logout -> presenter.doShowLogin()
+            R.id.item_logout -> presenter.doLogout()
         }
         return super.onOptionsItemSelected(item)
     }
@@ -55,6 +55,6 @@ class SiteListView : BaseView(), SiteListener {
     }
 
     override fun onBackPressed() {
-
+        // in order to not be able to get back to the login screen
     }
 }

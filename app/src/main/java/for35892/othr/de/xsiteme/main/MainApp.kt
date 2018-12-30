@@ -9,8 +9,6 @@ import xsiteme.models.SiteJSONStore
 class MainApp : Application(), AnkoLogger {
 
     lateinit var sites: SiteStore
-    lateinit var emailAdress: String
-    lateinit var password: String       //TODO: Email and pw needs to be stored somewhere else
 
     override fun onCreate() {
         super.onCreate()

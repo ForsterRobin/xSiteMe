@@ -1,5 +1,6 @@
 package for35892.othr.de.xsiteme.views.sitelist
 
+import com.google.firebase.auth.FirebaseAuth
 import for35892.othr.de.xsiteme.models.SiteModel
 import for35892.othr.de.xsiteme.views.BasePresenter
 import for35892.othr.de.xsiteme.views.BaseView
@@ -7,6 +8,8 @@ import for35892.othr.de.xsiteme.views.VIEW
 
 
 class SiteListPresenter(view: BaseView): BasePresenter(view) {
+
+    var auth: FirebaseAuth = FirebaseAuth.getInstance()
 
     fun doAddSite() {
         view?.navigateTo(VIEW.SITE)
@@ -24,7 +27,8 @@ class SiteListPresenter(view: BaseView): BasePresenter(view) {
         view?.navigateTo(VIEW.SETTINGS)
     }
 
-    fun doShowLogin() {
+    fun doLogout() {
+        auth.signOut()
         view?.navigateTo(VIEW.LOGIN)
     }
 
