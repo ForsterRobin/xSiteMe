@@ -65,17 +65,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/siteTitle"/>
 
         <CheckBox
-                android:id="@+id/checkBoxVisited"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:text="@string/check_box_visited"
-                app:layout_constraintStart_toStartOf="@+id/description"
-                app:layout_constraintTop_toBottomOf="@+id/description"/>
-
-        <CheckBox
                 android:id="@+id/checkBoxFavourite"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -83,8 +72,29 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
                 android:text="@string/check_box_favourite"
+                app:layout_constraintStart_toStartOf="@+id/description"
+                app:layout_constraintTop_toBottomOf="@+id/description"/>
+
+        <CheckBox
+                android:id="@+id/checkBoxVisited"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:text="@string/check_box_visited"
+                app:layout_constraintStart_toEndOf="@id/checkBoxFavourite"
+                app:layout_constraintTop_toBottomOf="@+id/description"/>
+
+        <TextView
+                android:id="@+id/dateVisited"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
                 app:layout_constraintStart_toEndOf="@id/checkBoxVisited"
                 app:layout_constraintTop_toBottomOf="@+id/description"/>
+
 
         <EditText
                 android:id="@+id/additionalNotes"

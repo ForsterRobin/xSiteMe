@@ -9,6 +9,7 @@ data class SiteModel(
     var title: String = "",
     var description: String = "",
     var visited: Boolean = false,
+    var dateVisited: String = "",
     var favourite: Boolean = false,
     var image: String = "",
     var additionalNotes: String = "",

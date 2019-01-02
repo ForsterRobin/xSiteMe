@@ -3,13 +3,15 @@ package for35892.othr.de.xsiteme.views.site
 import android.content.Intent
 import android.view.View
 import android.widget.CheckBox
-import android.widget.TextView
 import for35892.othr.de.xsiteme.R
 import for35892.othr.de.xsiteme.helpers.showImagePicker
 import for35892.othr.de.xsiteme.main.MainApp
 import for35892.othr.de.xsiteme.models.Location
 import for35892.othr.de.xsiteme.models.SiteModel
 import for35892.othr.de.xsiteme.views.*
+import kotlinx.android.synthetic.main.activity_site.*
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class SitePresenter(view: BaseView): BasePresenter(view) {
@@ -20,6 +22,7 @@ class SitePresenter(view: BaseView): BasePresenter(view) {
     var site = SiteModel()
     var defaultLocation = Location(49.021273, 12.098629, 15f)
     var visited = false
+    var dateVisited = ""
     var favourite = false
     var edit = false;
 
@@ -33,6 +36,7 @@ class SitePresenter(view: BaseView): BasePresenter(view) {
             view.showSite(site)
         }
         view.findViewById<CheckBox>(R.id.checkBoxVisited).isChecked = visited
+        view.dateVisited.text = site.dateVisited
         view.findViewById<CheckBox>(R.id.checkBoxFavourite).isChecked = favourite
     }
 
@@ -41,6 +45,7 @@ class SitePresenter(view: BaseView): BasePresenter(view) {
         site.description = description
         site.additionalNotes = additionalNotes
         site.visited = visited
+        site.dateVisited = dateVisited
         site.favourite = favourite
         site.additionalNotes = additionalNotes
         if (edit) {
@@ -76,6 +81,13 @@ class SitePresenter(view: BaseView): BasePresenter(view) {
     fun doChangeVisited() {
         visited = !visited
         site.visited = visited
+        if(visited) {
+            val sdf = SimpleDateFormat("dd/MM/yyyy")
+            dateVisited = "on " + sdf.format(System.currentTimeMillis())
+            view!!.dateVisited.text = dateVisited
+        } else {
+            view!!.dateVisited.text = ""
+        }
     }
 
     fun doChangeFavourite() {
