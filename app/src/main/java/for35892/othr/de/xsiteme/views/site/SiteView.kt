@@ -39,6 +39,7 @@ class SiteView : BaseView(), AnkoLogger {
     override fun showSite(site: SiteModel) {
         siteTitle.setText(site.title)
         description.setText(site.description)
+        additionalNotes.setText(site.additionalNotes)
         siteImage.setImageBitmap(readImageFromPath(this, site.image))
         if (site.image != null) {
             chooseImage.setText(R.string.change_site_image)
@@ -63,7 +64,7 @@ class SiteView : BaseView(), AnkoLogger {
                 if (siteTitle.text.toString().isEmpty()) {
                     toast(R.string.enter_site_title)
                 } else {
-                    presenter.doAddOrSave(siteTitle.text.toString(), description.text.toString())
+                    presenter.doAddOrSave(siteTitle.text.toString(), description.text.toString(), additionalNotes.text.toString())
                 }
             }
         }

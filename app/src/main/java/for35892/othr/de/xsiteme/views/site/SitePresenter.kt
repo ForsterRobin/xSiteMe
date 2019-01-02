@@ -1,15 +1,15 @@
 package for35892.othr.de.xsiteme.views.site
 
 import android.content.Intent
+import android.view.View
 import android.widget.CheckBox
+import android.widget.TextView
 import for35892.othr.de.xsiteme.R
 import for35892.othr.de.xsiteme.helpers.showImagePicker
 import for35892.othr.de.xsiteme.main.MainApp
 import for35892.othr.de.xsiteme.models.Location
 import for35892.othr.de.xsiteme.models.SiteModel
-import for35892.othr.de.xsiteme.views.BasePresenter
-import for35892.othr.de.xsiteme.views.BaseView
-import for35892.othr.de.xsiteme.views.VIEW
+import for35892.othr.de.xsiteme.views.*
 
 
 class SitePresenter(view: BaseView): BasePresenter(view) {
@@ -36,11 +36,13 @@ class SitePresenter(view: BaseView): BasePresenter(view) {
         view.findViewById<CheckBox>(R.id.checkBoxFavourite).isChecked = favourite
     }
 
-    fun doAddOrSave(title: String, description: String) {
+    fun doAddOrSave(title: String, description: String, additionalNotes: String) {
         site.title = title
         site.description = description
+        site.additionalNotes = additionalNotes
         site.visited = visited
         site.favourite = favourite
+        site.additionalNotes = additionalNotes
         if (edit) {
             app.sites.update(site)
         } else {

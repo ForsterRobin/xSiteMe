@@ -21,6 +21,9 @@
 
         <TextView
                 android:id="@+id/siteTitle"
+                android:lines="1"
+                android:scrollHorizontally="true"
+                android:ellipsize="end"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
@@ -29,6 +32,9 @@
 
         <TextView
                 android:id="@+id/description"
+                android:lines="1"
+                android:scrollHorizontally="true"
+                android:ellipsize="end"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/siteTitle"

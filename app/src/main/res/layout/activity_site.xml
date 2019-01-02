@@ -41,6 +41,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="64dp"
                 android:ems="10"
+                android:maxLength="40"
                 android:hint="@string/hint_siteTitle"
                 android:inputType="text"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -56,6 +57,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:ems="10"
+                android:maxLength="140"
                 android:hint="@string/hint_siteDescription"
                 android:inputType="textPersonName"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -84,6 +86,24 @@
                 app:layout_constraintStart_toEndOf="@id/checkBoxVisited"
                 app:layout_constraintTop_toBottomOf="@+id/description"/>
 
+        <EditText
+                android:id="@+id/additionalNotes"
+                android:layout_width="365dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:maxLength="300"
+                android:hint="@string/hint_additionalNotes"
+                android:inputType="textMultiLine"
+                android:overScrollMode="always"
+                android:scrollbarStyle="insideInset"
+                android:scrollbars="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/checkBoxFavourite"/>
+
         <Button
                 android:id="@+id/chooseImage"
                 android:layout_width="150dp"
@@ -91,7 +111,7 @@
                 android:layout_marginTop="8dp"
                 android:text="@string/button_addImage"
                 app:layout_constraintStart_toStartOf="@+id/description"
-                app:layout_constraintTop_toBottomOf="@+id/checkBoxVisited"/>
+                app:layout_constraintTop_toBottomOf="@+id/additionalNotes"/>
 
         <Button
                 android:id="@+id/siteLocation"
@@ -104,7 +124,7 @@
                 app:layout_constraintEnd_toEndOf="@+id/description"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toEndOf="@+id/chooseImage"
-                app:layout_constraintTop_toBottomOf="@+id/checkBoxVisited"/>
+                app:layout_constraintTop_toBottomOf="@+id/additionalNotes"/>
 
         <ImageView
                 android:id="@+id/siteImage"
