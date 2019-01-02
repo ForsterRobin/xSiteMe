@@ -30,8 +30,12 @@ class SiteAdapter constructor(private var sites: List<SiteModel>,
     class MainHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun bind(site: SiteModel, listener: SiteListener) {
+            val lat = String.format("%.4f", site.lat).toDouble()
+            val lng = String.format("%.4f", site.lng).toDouble()
+            val coordinates = "($lat, $lng)"
             itemView.siteTitle.text = site.title
             itemView.description.text = site.description
+            itemView.coordinates.text = coordinates
             itemView.imageIcon.setImageBitmap(readImageFromPath(itemView.context, site.image))
             itemView.setOnClickListener { listener.onSiteClick(site) }
         }
