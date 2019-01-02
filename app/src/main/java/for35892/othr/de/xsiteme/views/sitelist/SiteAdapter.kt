@@ -17,7 +17,7 @@ class SiteAdapter constructor(private var sites: List<SiteModel>,
                                    private val listener: SiteListener) : RecyclerView.Adapter<SiteAdapter.MainHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
-        return MainHolder(LayoutInflater.from(parent?.context).inflate(R.layout.card_site, parent, false))
+        return MainHolder(LayoutInflater.from(parent.context).inflate(R.layout.card_site, parent, false))
     }
 
     override fun onBindViewHolder(holder: MainHolder, position: Int) {
