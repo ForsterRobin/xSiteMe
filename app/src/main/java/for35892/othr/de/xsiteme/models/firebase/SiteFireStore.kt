@@ -30,6 +30,7 @@ class SiteFireStore(val context: Context) : SiteStore, AnkoLogger {
     }
 
     override fun create(site: SiteModel) {
+        userId = FirebaseAuth.getInstance().currentUser!!.uid
         val key = db.child("users").child(userId).child("sites").push().key
         site.fbId = key!!
         sites.add(site)
