@@ -48,6 +48,10 @@ class SiteMemStore : SiteStore, AnkoLogger {
     sites.remove(site)
   }
 
+  override fun clear() {
+    sites.clear()
+  }
+
   fun logAll() {
     sites.forEach { info("${it}") }
   }

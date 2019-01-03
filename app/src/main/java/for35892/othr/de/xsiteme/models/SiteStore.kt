@@ -6,4 +6,5 @@ interface SiteStore {
   fun update(site: SiteModel)
   fun delete(site: SiteModel)
   fun findById(id:Long) : SiteModel?
+  fun clear()
 }

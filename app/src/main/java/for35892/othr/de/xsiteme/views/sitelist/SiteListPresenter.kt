@@ -9,8 +9,6 @@ import for35892.othr.de.xsiteme.views.VIEW
 
 class SiteListPresenter(view: BaseView): BasePresenter(view) {
 
-    var auth: FirebaseAuth = FirebaseAuth.getInstance()
-
     fun doAddSite() {
         view?.navigateTo(VIEW.SITE)
     }
@@ -28,7 +26,8 @@ class SiteListPresenter(view: BaseView): BasePresenter(view) {
     }
 
     fun doLogout() {
-        auth.signOut()
+        FirebaseAuth.getInstance().signOut()
+        app.sites.clear()
         view?.navigateTo(VIEW.LOGIN)
     }
 

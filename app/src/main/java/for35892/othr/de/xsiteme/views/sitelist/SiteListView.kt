@@ -25,8 +25,8 @@ class SiteListView : BaseView(), SiteListener {
         presenter.loadSites()
     }
 
-    override fun showSites(placemarks: List<SiteModel>) {
-        recyclerView.adapter = SiteAdapter(placemarks, this)
+    override fun showSites(sites: List<SiteModel>) {
+        recyclerView.adapter = SiteAdapter(sites, this)
         recyclerView.adapter?.notifyDataSetChanged()
     }
 
