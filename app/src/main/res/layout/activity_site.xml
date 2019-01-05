@@ -95,6 +95,16 @@
                 app:layout_constraintStart_toEndOf="@id/checkBoxVisited"
                 app:layout_constraintTop_toBottomOf="@+id/description"/>
 
+        <RatingBar
+                android:id="@+id/ratingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:numStars="5"
+                android:stepSize="1"
+                app:layout_constraintStart_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dateVisited"/>
+
 
         <EditText
                 android:id="@+id/additionalNotes"
@@ -112,7 +122,7 @@
                 android:scrollbars="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/checkBoxFavourite"/>
+                app:layout_constraintTop_toBottomOf="@+id/ratingBar"/>
 
         <Button
                 android:id="@+id/chooseImage"

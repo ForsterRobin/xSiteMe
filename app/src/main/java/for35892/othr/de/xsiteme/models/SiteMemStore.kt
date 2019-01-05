@@ -36,7 +36,11 @@ class SiteMemStore : SiteStore, AnkoLogger {
       foundSite.title = site.title
       foundSite.description = site.description
       foundSite.visited = site.visited
+      foundSite.dateVisited = site.dateVisited
+      foundSite.favourite = site.favourite
+      foundSite.rating = site.rating
       foundSite.image = site.image
+      foundSite.additionalNotes = site.additionalNotes
       foundSite.lat = site.lat
       foundSite.lng = site.lng
       foundSite.zoom = site.zoom

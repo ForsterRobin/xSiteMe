@@ -1,17 +1,16 @@
 package for35892.othr.de.xsiteme.views.site
 
 import android.content.Intent
-import android.view.View
-import android.widget.CheckBox
-import for35892.othr.de.xsiteme.R
+import android.widget.RatingBar
 import for35892.othr.de.xsiteme.helpers.showImagePicker
 import for35892.othr.de.xsiteme.main.MainApp
 import for35892.othr.de.xsiteme.models.Location
 import for35892.othr.de.xsiteme.models.SiteModel
-import for35892.othr.de.xsiteme.views.*
+import for35892.othr.de.xsiteme.views.BasePresenter
+import for35892.othr.de.xsiteme.views.BaseView
+import for35892.othr.de.xsiteme.views.VIEW
 import kotlinx.android.synthetic.main.activity_site.*
 import java.text.SimpleDateFormat
-import java.util.*
 
 
 class SitePresenter(view: BaseView): BasePresenter(view) {
@@ -24,6 +23,7 @@ class SitePresenter(view: BaseView): BasePresenter(view) {
     var visited = false
     var dateVisited = ""
     var favourite = false
+    var rating = 0f
     var edit = false;
 
     init {
@@ -31,13 +31,16 @@ class SitePresenter(view: BaseView): BasePresenter(view) {
         if (view.intent.hasExtra("site_edit")) {
             edit = true
             site = view.intent.extras.getParcelable<SiteModel>("site_edit")
-            visited = site.visited
             favourite = site.favourite
+            visited = site.visited
+            dateVisited = site.dateVisited
+            rating = site.rating
             view.showSite(site)
         }
-        view.findViewById<CheckBox>(R.id.checkBoxVisited).isChecked = visited
-        view.dateVisited.text = site.dateVisited
-        view.findViewById<CheckBox>(R.id.checkBoxFavourite).isChecked = favourite
+        view.checkBoxFavourite.isChecked = favourite
+        view.checkBoxVisited.isChecked = visited
+        view.dateVisited.text = dateVisited
+        view.ratingBar.rating = rating
     }
 
     fun doAddOrSave(title: String, description: String, additionalNotes: String) {
@@ -47,6 +50,7 @@ class SitePresenter(view: BaseView): BasePresenter(view) {
         site.visited = visited
         site.dateVisited = dateVisited
         site.favourite = favourite
+        site.rating = rating
         site.additionalNotes = additionalNotes
         if (edit) {
             app.sites.update(site)
@@ -95,6 +99,10 @@ class SitePresenter(view: BaseView): BasePresenter(view) {
         site.favourite = favourite
     }
 
+    fun doChangeRating(newRating: Float) {
+        rating = newRating
+    }
+
     override fun doActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
         when (requestCode) {
             IMAGE_REQUEST -> {
@@ -107,5 +115,9 @@ class SitePresenter(view: BaseView): BasePresenter(view) {
                 site.zoom = location.zoom
             }
         }
+    }
+
+    fun onRatingChanged(p0: RatingBar?, p1: Float, p2: Boolean) {
+
     }
 }

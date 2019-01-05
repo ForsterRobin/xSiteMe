@@ -4,13 +4,14 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.RatingBar.OnRatingBarChangeListener
+import for35892.othr.de.xsiteme.R
 import for35892.othr.de.xsiteme.helpers.readImageFromPath
 import for35892.othr.de.xsiteme.models.SiteModel
+import for35892.othr.de.xsiteme.views.BaseView
 import kotlinx.android.synthetic.main.activity_site.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.toast
-import for35892.othr.de.xsiteme.R
-import for35892.othr.de.xsiteme.views.BaseView
 
 
 class SiteView : BaseView(), AnkoLogger {
@@ -34,6 +35,13 @@ class SiteView : BaseView(), AnkoLogger {
         checkBoxVisited.setOnClickListener { presenter.doChangeVisited() }
 
         checkBoxFavourite.setOnClickListener { presenter.doChangeFavourite() }
+
+        addListenerOnRatingBar()
+    }
+
+    fun addListenerOnRatingBar() {
+        ratingBar.onRatingBarChangeListener =
+                OnRatingBarChangeListener { ratingBar, newRating, fromUser -> presenter.doChangeRating(newRating) }
     }
 
     override fun showSite(site: SiteModel) {

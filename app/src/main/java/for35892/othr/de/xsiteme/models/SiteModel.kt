@@ -12,6 +12,7 @@ data class SiteModel(
     var visited: Boolean = false,
     var dateVisited: String = "",
     var favourite: Boolean = false,
+    var rating: Float = 0f,
     var image: String = "",
     var additionalNotes: String = "",
     var lat: Double = 49.021273,
