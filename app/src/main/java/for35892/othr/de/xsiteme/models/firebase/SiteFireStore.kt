@@ -24,6 +24,10 @@ class SiteFireStore(val context: Context) : SiteStore, AnkoLogger {
         return sites
     }
 
+    override fun findFavourites(): List<SiteModel> {
+        return sites.filter { site -> site.favourite }
+    }
+
     override fun findById(id: Long): SiteModel? {
         val foundSite: SiteModel? = sites.find { p -> p.id == id }
         return foundSite

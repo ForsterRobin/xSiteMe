@@ -19,6 +19,10 @@ class SiteMemStore : SiteStore, AnkoLogger {
     return sites
   }
 
+  override fun findFavourites(): List<SiteModel> {
+    return sites.filter { site -> site.favourite }
+  }
+
   override fun findById(id: Long): SiteModel? {
     val foundSite: SiteModel? = sites.find { it.id == id }
     return foundSite

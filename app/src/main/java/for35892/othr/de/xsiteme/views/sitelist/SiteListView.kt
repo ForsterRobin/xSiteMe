@@ -41,6 +41,7 @@ class SiteListView : BaseView(), SiteListener {
             R.id.item_map -> presenter.doShowSitesMap()
             R.id.item_settings -> presenter.doShowSettings()
             R.id.item_logout -> presenter.doLogout()
+            R.id.item_toggleFavourites -> presenter.toggleFavourites()
         }
         return super.onOptionsItemSelected(item)
     }
@@ -56,5 +57,14 @@ class SiteListView : BaseView(), SiteListener {
 
     override fun onBackPressed() {
         // in order to not be able to get back to the login screen
+    }
+
+    override fun onPrepareOptionsMenu(menu: Menu): Boolean {
+        if (!presenter.favouritesShown) {
+            menu.findItem(R.id.item_toggleFavourites).title = "Show Favourites"
+        } else {
+            menu.findItem(R.id.item_toggleFavourites).title = "Show all Sites"
+        }
+        return super.onPrepareOptionsMenu(menu)
     }
 }

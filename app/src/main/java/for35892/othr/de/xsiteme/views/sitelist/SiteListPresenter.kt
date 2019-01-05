@@ -1,6 +1,7 @@
 package for35892.othr.de.xsiteme.views.sitelist
 
 import com.google.firebase.auth.FirebaseAuth
+import for35892.othr.de.xsiteme.R
 import for35892.othr.de.xsiteme.models.SiteModel
 import for35892.othr.de.xsiteme.views.BasePresenter
 import for35892.othr.de.xsiteme.views.BaseView
@@ -8,6 +9,9 @@ import for35892.othr.de.xsiteme.views.VIEW
 
 
 class SiteListPresenter(view: BaseView): BasePresenter(view) {
+
+    var favouritesShown: Boolean = false
+
 
     fun doAddSite() {
         view?.navigateTo(VIEW.SITE)
@@ -33,5 +37,19 @@ class SiteListPresenter(view: BaseView): BasePresenter(view) {
 
     fun loadSites() {
         view?.showSites(app.sites.findAll())
+    }
+
+    fun loadFavouriteSites() {
+        view?.showSites(app.sites.findFavourites())
+    }
+
+    fun toggleFavourites() {
+        if(favouritesShown) {
+            loadSites()
+        } else {
+            loadFavouriteSites()
+        }
+        favouritesShown = !favouritesShown
+        view?.invalidateOptionsMenu()
     }
 }

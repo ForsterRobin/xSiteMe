@@ -19,7 +19,8 @@
     <string name="menu_back">Back</string>
     <string name="menu_logout">Logout</string>
     <string name="menu_settings">Settings</string>
-    
+    <string name="menu_toggleFavourites">Toggle Favourites</string>
+
     <string name="title_activity_maps">Map</string>
     <string name="title_activity_site_maps">Map of all Sites</string>
     <string name="title_activity_siteList">Sites</string>

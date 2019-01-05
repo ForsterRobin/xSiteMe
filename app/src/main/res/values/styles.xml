@@ -12,5 +12,9 @@
     <style name="SplashscreenTheme" parent="Theme.AppCompat.Light.NoActionBar">
 
     </style>
+    <style name="ThemeOverlay.ToolbarTheme" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:colorBackground">@color/colorAccent</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
 
 </resources>

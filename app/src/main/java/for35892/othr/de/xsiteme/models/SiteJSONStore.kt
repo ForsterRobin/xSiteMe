@@ -34,6 +34,10 @@ class SiteJSONStore : SiteStore, AnkoLogger {
     return sites
   }
 
+  override fun findFavourites(): MutableList<SiteModel> {
+    return sites.filter { site -> site.favourite }.toMutableList()
+  }
+
   override fun findById(id: Long): SiteModel? {
     val foundSite: SiteModel? = sites.find { it.id == id }
     return foundSite
