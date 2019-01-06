@@ -38,6 +38,11 @@ class SiteAdapter constructor(private var sites: List<SiteModel>,
             itemView.coordinates.text = coordinates
             itemView.imageIcon.setImageBitmap(readImageFromPath(itemView.context, site.image))
             itemView.setOnClickListener { listener.onSiteClick(site) }
+            if(site.visited) {
+                itemView.visited.visibility = View.VISIBLE
+            } else {
+                itemView.visited.visibility = View.GONE
+            }
         }
     }
 }
