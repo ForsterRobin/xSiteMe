@@ -25,9 +25,14 @@ class SiteMapPresenter(view: SiteMapView): BasePresenter(view){
 
     fun doOnMarkerClick(marker: Marker): Boolean{
         val site = marker.tag as SiteModel
-        //val site = app.sites.findById(tag)
-        view!!.currentTitle.text = site!!.title
-        view!!.currentDescription.text = site!!.description
+
+        val lat = String.format("%.4f", site.lat).toDouble()
+        val lng = String.format("%.4f", site.lng).toDouble()
+        val coordinates = "($lat, $lng)"
+
+        view!!.currentTitle.text = site.title
+        view!!.currentDescription.text = site.description
+        view!!.currentCoordinates.text = coordinates
         view!!.imageView.setImageBitmap(readImageFromPath(view as SiteMapView, site.image))
         return true
     }
