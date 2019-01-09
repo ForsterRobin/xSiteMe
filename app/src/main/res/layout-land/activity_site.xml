@@ -26,7 +26,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="600dp"
+            android:layout_height="match_parent"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -35,7 +35,7 @@
 
         <EditText
                 android:id="@+id/siteTitle"
-                android:layout_width="365dp"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
@@ -51,7 +51,7 @@
 
         <EditText
                 android:id="@+id/description"
-                android:layout_width="365dp"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
@@ -108,7 +108,7 @@
 
         <EditText
                 android:id="@+id/additionalNotes"
-                android:layout_width="365dp"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
@@ -147,14 +147,16 @@
         <ImageView
                 android:id="@+id/siteImage"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/siteTitle"
-                app:layout_constraintTop_toBottomOf="@+id/chooseImage"/>
+                app:layout_constraintTop_toBottomOf="@+id/chooseImage"
+                app:layout_constraintBottom_toBottomOf="parent"
+        />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
