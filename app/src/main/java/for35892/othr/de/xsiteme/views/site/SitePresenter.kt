@@ -2,6 +2,8 @@ package for35892.othr.de.xsiteme.views.site
 
 import android.content.Intent
 import android.widget.RatingBar
+import for35892.othr.de.xsiteme.R.id.siteImage
+import for35892.othr.de.xsiteme.helpers.readImageFromPath
 import for35892.othr.de.xsiteme.helpers.showImagePicker
 import for35892.othr.de.xsiteme.main.MainApp
 import for35892.othr.de.xsiteme.models.Location
@@ -107,7 +109,7 @@ class SitePresenter(view: BaseView): BasePresenter(view) {
         when (requestCode) {
             IMAGE_REQUEST -> {
                 site.image = data.data.toString()
-            }
+                view?.showImage(site)}
             LOCATION_REQUEST -> {
                 val location = data.extras.getParcelable<Location>("location")
                 site.lat = location.lat

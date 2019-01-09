@@ -49,9 +49,13 @@ class SiteView : BaseView(), AnkoLogger {
         description.setText(site.description)
         additionalNotes.setText(site.additionalNotes)
         siteImage.setImageBitmap(readImageFromPath(this, site.image))
-        if (site.image != null) {
+        if (site.image != "") {
             chooseImage.setText(R.string.change_site_image)
         }
+    }
+
+    override fun showImage(site: SiteModel) {
+        siteImage.setImageBitmap(readImageFromPath(this, site.image))
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

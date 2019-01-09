@@ -7,6 +7,7 @@ import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.content_site_maps.*
 import for35892.othr.de.xsiteme.helpers.readImageFromPath
+import for35892.othr.de.xsiteme.models.SiteModel
 import for35892.othr.de.xsiteme.views.BasePresenter
 
 class SiteMapPresenter(view: SiteMapView): BasePresenter(view){
@@ -17,14 +18,14 @@ class SiteMapPresenter(view: SiteMapView): BasePresenter(view){
         app.sites.findAll().forEach {
             val loc = LatLng(it.lat, it.lng)
             val options = MarkerOptions().title(it.title).position(loc)
-            map.addMarker(options).tag = it.id
+            map.addMarker(options).tag = it
             map.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, it.zoom))
         }
     }
 
     fun doOnMarkerClick(marker: Marker): Boolean{
-        val tag = marker.tag as Long
-        val site = app.sites.findById(tag)
+        val site = marker.tag as SiteModel
+        //val site = app.sites.findById(tag)
         view!!.currentTitle.text = site!!.title
         view!!.currentDescription.text = site!!.description
         view!!.imageView.setImageBitmap(readImageFromPath(view as SiteMapView, site.image))
