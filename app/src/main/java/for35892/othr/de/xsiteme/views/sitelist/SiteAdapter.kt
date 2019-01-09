@@ -1,6 +1,6 @@
 package for35892.othr.de.xsiteme.views.sitelist
 
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,7 +14,7 @@ interface SiteListener {
 }
 
 class SiteAdapter constructor(private var sites: List<SiteModel>,
-                                   private val listener: SiteListener) : RecyclerView.Adapter<SiteAdapter.MainHolder>() {
+                                   private val listener: SiteListener) : androidx.recyclerview.widget.RecyclerView.Adapter<SiteAdapter.MainHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
         return MainHolder(LayoutInflater.from(parent.context).inflate(R.layout.card_site, parent, false))
@@ -27,7 +27,7 @@ class SiteAdapter constructor(private var sites: List<SiteModel>,
 
     override fun getItemCount(): Int = sites.size
 
-    class MainHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class MainHolder constructor(itemView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {
 
         fun bind(site: SiteModel, listener: SiteListener) {
             val lat = String.format("%.4f", site.lat).toDouble()

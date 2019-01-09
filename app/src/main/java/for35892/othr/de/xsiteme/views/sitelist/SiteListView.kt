@@ -2,7 +2,7 @@ package for35892.othr.de.xsiteme.views.sitelist
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.*
 import kotlinx.android.synthetic.main.activity_site_list.*
 import for35892.othr.de.xsiteme.R
@@ -20,7 +20,7 @@ class SiteListView : BaseView(), SiteListener {
 
         presenter = initPresenter(SiteListPresenter(this)) as SiteListPresenter
 
-        val layoutManager = LinearLayoutManager(this)
+        val layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
         presenter.loadSites()
     }

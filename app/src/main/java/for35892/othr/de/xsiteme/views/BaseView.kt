@@ -2,8 +2,8 @@ package for35892.othr.de.xsiteme.views
 
 import android.content.Intent
 import android.os.Parcelable
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.Toolbar
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import for35892.othr.de.xsiteme.models.SiteModel
 import for35892.othr.de.xsiteme.views.editlocation.EditLocationView
 import for35892.othr.de.xsiteme.views.login.LoginView

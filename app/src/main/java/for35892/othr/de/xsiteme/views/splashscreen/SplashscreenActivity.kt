@@ -2,7 +2,7 @@ package for35892.othr.de.xsiteme.views.splashscreen
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import for35892.othr.de.xsiteme.R
 import for35892.othr.de.xsiteme.views.login.LoginView
 import for35892.othr.de.xsiteme.views.sitelist.SiteListPresenter
