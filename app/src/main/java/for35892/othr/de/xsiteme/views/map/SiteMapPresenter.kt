@@ -1,10 +1,12 @@
 package for35892.othr.de.xsiteme.views.map
 
+import com.bumptech.glide.Glide
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
+import for35892.othr.de.xsiteme.R.id.imageView
 import kotlinx.android.synthetic.main.content_site_maps.*
 import for35892.othr.de.xsiteme.helpers.readImageFromPath
 import for35892.othr.de.xsiteme.models.SiteModel
@@ -33,7 +35,9 @@ class SiteMapPresenter(view: SiteMapView): BasePresenter(view){
         view!!.currentTitle.text = site.title
         view!!.currentDescription.text = site.description
         view!!.currentCoordinates.text = coordinates
-        view!!.imageView.setImageBitmap(readImageFromPath(view as SiteMapView, site.image))
+        //view!!.imageView.setImageBitmap(readImageFromPath(view as SiteMapView, site.image))
+        val myView = view as SiteMapView
+        Glide.with(myView).load(site.image).into(myView.imageView)
         return true
     }
 

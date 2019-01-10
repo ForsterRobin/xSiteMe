@@ -4,6 +4,7 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.card_site.view.*
 import for35892.othr.de.xsiteme.R
 import for35892.othr.de.xsiteme.helpers.readImageFromPath
@@ -36,7 +37,8 @@ class SiteAdapter constructor(private var sites: List<SiteModel>,
             itemView.siteTitle.text = site.title
             itemView.description.text = site.description
             itemView.coordinates.text = coordinates
-            itemView.imageIcon.setImageBitmap(readImageFromPath(itemView.context, site.image))
+            //itemView.imageIcon.setImageBitmap(readImageFromPath(itemView.context, site.image))
+            Glide.with(itemView.context).load(site.image).into(itemView.imageIcon);
             itemView.setOnClickListener { listener.onSiteClick(site) }
             if(site.visited) {
                 itemView.visited.visibility = View.VISIBLE

@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.RatingBar.OnRatingBarChangeListener
+import com.bumptech.glide.Glide
 import for35892.othr.de.xsiteme.R
 import for35892.othr.de.xsiteme.helpers.readImageFromPath
 import for35892.othr.de.xsiteme.models.SiteModel
@@ -48,7 +49,8 @@ class SiteView : BaseView(), AnkoLogger {
         siteTitle.setText(site.title)
         description.setText(site.description)
         additionalNotes.setText(site.additionalNotes)
-        siteImage.setImageBitmap(readImageFromPath(this, site.image))
+        //siteImage.setImageBitmap(readImageFromPath(this, site.image))
+        Glide.with(this).load(site.image).into(siteImage);
         if (site.image != "") {
             chooseImage.setText(R.string.change_site_image)
         }
