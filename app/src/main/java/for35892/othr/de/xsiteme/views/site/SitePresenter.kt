@@ -1,9 +1,11 @@
 package for35892.othr.de.xsiteme.views.site
 
 import android.content.Intent
+import android.net.Uri
+import android.os.Environment
+import android.provider.MediaStore
+import android.view.View
 import android.widget.RatingBar
-import for35892.othr.de.xsiteme.R.id.siteImage
-import for35892.othr.de.xsiteme.helpers.readImageFromPath
 import for35892.othr.de.xsiteme.helpers.showImagePicker
 import for35892.othr.de.xsiteme.main.MainApp
 import for35892.othr.de.xsiteme.models.Location
@@ -13,12 +15,14 @@ import for35892.othr.de.xsiteme.views.BaseView
 import for35892.othr.de.xsiteme.views.VIEW
 import kotlinx.android.synthetic.main.activity_site.*
 import java.text.SimpleDateFormat
+import java.io.File
 
 
-class SitePresenter(view: BaseView): BasePresenter(view) {
+class SitePresenter(view: BaseView) : BasePresenter(view) {
 
     val IMAGE_REQUEST = 1
     val LOCATION_REQUEST = 2
+    val CAMERA_REQUEST = 3
 
     var site = SiteModel()
     var defaultLocation = Location(49.021273, 12.098629, 15f)
@@ -72,6 +76,30 @@ class SitePresenter(view: BaseView): BasePresenter(view) {
     }
 
     fun doSelectImage() {
+        view!!.chooseImage.visibility = View.GONE
+        view!!.chooseImageFromCamera.visibility = View.VISIBLE
+        view!!.chooseImageFromGallery.visibility = View.VISIBLE
+    }
+
+    fun doSelectImageFromCamera() {
+        view!!.chooseImage.visibility = View.VISIBLE
+        view!!.chooseImageFromCamera.visibility = View.GONE
+        view!!.chooseImageFromGallery.visibility = View.GONE
+
+        val cameraIntent = Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE)
+        File(
+            Environment.getExternalStoragePublicDirectory("DIRECTORY_DOWNLOADS"),
+            "fname_" + System.currentTimeMillis().toString() + ".jpg"
+        )
+
+        view!!.startActivityForResult(cameraIntent, CAMERA_REQUEST)
+    }
+
+    fun doSelectImageFromGallery() {
+        view!!.chooseImage.visibility = View.VISIBLE
+        view!!.chooseImageFromCamera.visibility = View.GONE
+        view!!.chooseImageFromGallery.visibility = View.GONE
+
         showImagePicker(view!!, IMAGE_REQUEST)
     }
 
@@ -87,7 +115,7 @@ class SitePresenter(view: BaseView): BasePresenter(view) {
     fun doChangeVisited() {
         visited = !visited
         site.visited = visited
-        if(visited) {
+        if (visited) {
             val sdf = SimpleDateFormat("dd/MM/yyyy")
             dateVisited = "on " + sdf.format(System.currentTimeMillis())
             view!!.dateVisited.text = dateVisited
@@ -109,7 +137,11 @@ class SitePresenter(view: BaseView): BasePresenter(view) {
         when (requestCode) {
             IMAGE_REQUEST -> {
                 site.image = data.data.toString()
-                view?.showImage(site)}
+                view?.showImage(site)
+            }
+            CAMERA_REQUEST -> {
+                showImagePicker(view!!, IMAGE_REQUEST)
+            }
             LOCATION_REQUEST -> {
                 val location = data.extras.getParcelable<Location>("location")
                 site.lat = location.lat

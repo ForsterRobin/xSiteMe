@@ -30,6 +30,8 @@ class SiteView : BaseView(), AnkoLogger {
         presenter = initPresenter (SitePresenter(this)) as SitePresenter
 
         chooseImage.setOnClickListener { presenter.doSelectImage() }
+        chooseImageFromCamera.setOnClickListener { presenter.doSelectImageFromCamera() }
+        chooseImageFromGallery.setOnClickListener { presenter.doSelectImageFromGallery() }
 
         siteLocation.setOnClickListener { presenter.doSetLocation() }
 

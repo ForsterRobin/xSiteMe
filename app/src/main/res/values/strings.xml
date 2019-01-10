@@ -44,5 +44,7 @@
     <string name="loginFailed">Login failed, please try again.</string>
     <string name="button_signup">sign up</string>
     <string name="hint_additionalNotes">Additional Notes</string>
+    <string name="button_chooseFromGallery">Choose image form Gallery</string>
+    <string name="button_chooseImageFromCamera">Choose image form Camera</string>
 
 </resources>
