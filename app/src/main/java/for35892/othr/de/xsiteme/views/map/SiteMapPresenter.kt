@@ -13,7 +13,7 @@ import for35892.othr.de.xsiteme.views.BasePresenter
 class SiteMapPresenter(view: SiteMapView): BasePresenter(view){
 
     fun doConfigureMap(map: GoogleMap) {
-        map.uiSettings.setZoomControlsEnabled(true)
+        map.uiSettings.isZoomControlsEnabled = true
         map.setOnMarkerClickListener(view as SiteMapView)
         app.sites.findAll().forEach {
             val loc = LatLng(it.lat, it.lng)
@@ -33,7 +33,6 @@ class SiteMapPresenter(view: SiteMapView): BasePresenter(view){
         view!!.currentTitle.text = site.title
         view!!.currentDescription.text = site.description
         view!!.currentCoordinates.text = coordinates
-        //view!!.imageView.setImageBitmap(readImageFromPath(view as SiteMapView, site.image))
         val myView = view as SiteMapView
         Glide.with(myView).load(site.image).into(myView.imageView)
         return true
