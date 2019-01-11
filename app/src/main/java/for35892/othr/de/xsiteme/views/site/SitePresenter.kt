@@ -96,7 +96,6 @@ class SitePresenter(view: BaseView) : BasePresenter(view) {
             var photoURI =
                 FileProvider.getUriForFile(view!! as SiteView, "for35892.othr.de.xsiteme.provider", photoFile)
             pictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI)
-            pictureIntent.putExtra("TEST", "test123")
             view!!.startActivityForResult(pictureIntent, CAMERA_REQUEST)
 
         }
