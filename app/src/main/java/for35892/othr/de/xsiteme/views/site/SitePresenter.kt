@@ -37,7 +37,11 @@ class SitePresenter(view: BaseView) : BasePresenter(view) {
             site = view.intent.extras.getParcelable<SiteModel>("site_edit")
             favourite = site.favourite
             visited = site.visited
-            dateVisited = site.dateVisited
+            if(visited){
+                dateVisited = site.dateVisited
+            } else {
+                dateVisited = ""
+            }
             rating = site.rating
             view.showSite(site)
         }
