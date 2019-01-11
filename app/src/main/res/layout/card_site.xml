@@ -35,7 +35,19 @@
                 android:src="@drawable/ic_site_visited"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/siteTitle"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_margin="10dp"
+                android:textSize="30sp"/>
+
+        <ImageView
+                android:id="@+id/favourite"
+                android:src="@drawable/ic_site_favourite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@id/visited"
                 android:layout_margin="10dp"
                 android:textSize="30sp"/>
 

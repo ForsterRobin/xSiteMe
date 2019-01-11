@@ -35,13 +35,17 @@ class SiteAdapter constructor(private var sites: List<SiteModel>,
             itemView.siteTitle.text = site.title
             itemView.description.text = site.description
             itemView.coordinates.text = coordinates
-            //itemView.imageIcon.setImageBitmap(readImageFromPath(itemView.context, site.image))
-            Glide.with(itemView.context).load(site.image).into(itemView.imageIcon);
+            Glide.with(itemView.context).load(site.image).into(itemView.imageIcon)
             itemView.setOnClickListener { listener.onSiteClick(site) }
             if(site.visited) {
                 itemView.visited.visibility = View.VISIBLE
             } else {
                 itemView.visited.visibility = View.GONE
+            }
+            if(site.favourite) {
+                itemView.favourite.visibility = View.VISIBLE
+            } else {
+                itemView.favourite.visibility = View.GONE
             }
         }
     }
