@@ -13,10 +13,7 @@ import for35892.othr.de.xsiteme.views.BaseView
 import for35892.othr.de.xsiteme.views.VIEW
 import kotlinx.android.synthetic.main.activity_site.*
 import java.text.SimpleDateFormat
-import java.io.File
-import androidx.core.app.ActivityCompat.startActivityForResult
 import androidx.core.content.FileProvider
-import java.io.IOException
 
 
 class SitePresenter(view: BaseView) : BasePresenter(view) {
@@ -86,14 +83,6 @@ class SitePresenter(view: BaseView) : BasePresenter(view) {
         view!!.chooseImage.visibility = View.VISIBLE
         view!!.chooseImageFromCamera.visibility = View.GONE
         view!!.chooseImageFromGallery.visibility = View.GONE
-
-//        val cameraIntent = Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE)
-//        File(
-//            Environment.getExternalStoragePublicDirectory("DIRECTORY_DOWNLOADS"),
-//            "fname_" + System.currentTimeMillis().toString() + ".jpg"
-//        )
-//
-//        view!!.startActivityForResult(cameraIntent, CAMERA_REQUEST)
 
         val pictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
         if (pictureIntent.resolveActivity(view!!.packageManager) != null) {

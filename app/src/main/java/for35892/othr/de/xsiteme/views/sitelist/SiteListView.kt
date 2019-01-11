@@ -2,7 +2,6 @@ package for35892.othr.de.xsiteme.views.sitelist
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.*
 import kotlinx.android.synthetic.main.activity_site_list.*
 import for35892.othr.de.xsiteme.R

@@ -5,7 +5,6 @@ import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 import for35892.othr.de.xsiteme.models.SiteStore
 import for35892.othr.de.xsiteme.models.firebase.SiteFireStore
-import xsiteme.models.SiteJSONStore
 
 class MainApp : Application(), AnkoLogger {
 

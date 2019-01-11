@@ -5,8 +5,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import for35892.othr.de.xsiteme.R
 import for35892.othr.de.xsiteme.views.login.LoginView
-import for35892.othr.de.xsiteme.views.sitelist.SiteListPresenter
-import for35892.othr.de.xsiteme.views.sitelist.SiteListView
 
 class SplashscreenActivity : AppCompatActivity() {
 

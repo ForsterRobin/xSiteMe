@@ -13,14 +13,11 @@ import for35892.othr.de.xsiteme.views.site.SiteView
 import for35892.othr.de.xsiteme.views.sitelist.SiteListView
 import org.jetbrains.anko.AnkoLogger
 
-val IMAGE_REQUEST = 1
-val LOCATION_REQUEST = 2
-
 enum class VIEW {
     LOCATION, SITE, MAP, LIST, SETTINGS, LOGIN
 }
 
-open abstract class BaseView() : AppCompatActivity(), AnkoLogger {
+abstract class BaseView : AppCompatActivity(), AnkoLogger {
 
     var basePresenter: BasePresenter? = null
 
