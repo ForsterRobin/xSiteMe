@@ -54,27 +54,7 @@
                   android:layout_marginTop="128dp"
                   app:layout_constraintStart_toEndOf="@id/email"
                   app:layout_constraintTop_toTopOf="parent"/>
-        <TextView
-                android:id="@+id/password"
-                android:text="@string/password"
-                android:textSize="20sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/email"/>
-        <TextView
-                android:id="@+id/passwordvalue"
-                android:textSize="20sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintStart_toEndOf="@id/password"
-                app:layout_constraintTop_toBottomOf="@+id/email"/>
+
         <TextView
                 android:id="@+id/statistics"
                 android:text="@string/statistics"
@@ -85,7 +65,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="30dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/password"/>
+                app:layout_constraintTop_toBottomOf="@+id/emailvalue"/>
         <TextView
                 android:id="@+id/numberofsites"
                 android:text="@string/numberofsites"
