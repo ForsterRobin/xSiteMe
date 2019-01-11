@@ -51,14 +51,14 @@ class SiteView : BaseView(), AnkoLogger {
         siteTitle.setText(site.title)
         description.setText(site.description)
         additionalNotes.setText(site.additionalNotes)
-        Glide.with(this).load(site.image).into(siteImage);
+        Glide.with(this).load(site.image).into(siteImage)
         if (site.image != "") {
             chooseImage.setText(R.string.change_site_image)
         }
     }
 
     override fun showImage(site: SiteModel) {
-        siteImage.setImageBitmap(readImageFromPath(this, site.image))
+        Glide.with(this).load(site.image).into(siteImage)
         if (site.image != "") {
             chooseImage.setText(R.string.change_site_image)
         }

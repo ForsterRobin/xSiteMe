@@ -29,8 +29,7 @@ class SiteFireStore(val context: Context) : SiteStore, AnkoLogger {
     }
 
     override fun findById(id: Long): SiteModel? {
-        val foundSite: SiteModel? = sites.find { p -> p.id == id }
-        return foundSite
+        return sites.find { p -> p.id == id }
     }
 
     override fun create(site: SiteModel) {
@@ -39,6 +38,7 @@ class SiteFireStore(val context: Context) : SiteStore, AnkoLogger {
         site.fbId = key!!
         sites.add(site)
         db.child("users").child(userId).child("sites").child(key).setValue(site)
+        updateImage(site)
     }
 
     override fun update(site: SiteModel) {
@@ -58,6 +58,9 @@ class SiteFireStore(val context: Context) : SiteStore, AnkoLogger {
         }
 
         db.child("users").child(userId).child("sites").child(site.fbId).setValue(site)
+        if ((site.image.length) > 0 && (site.image[0] != 'h')) {
+            updateImage(site)
+        }
     }
 
     override fun delete(site: SiteModel) {
@@ -81,18 +84,18 @@ class SiteFireStore(val context: Context) : SiteStore, AnkoLogger {
         userId = FirebaseAuth.getInstance().currentUser!!.uid
         db = FirebaseDatabase.getInstance().reference
         st = FirebaseStorage.getInstance().reference
-        sites.clear()
+        clear()
         db.child("users").child(userId).child("sites").addListenerForSingleValueEvent(valueEventListener)
     }
 
-    fun updateImage(placemark: SiteModel) {
-        if (placemark.image != "") {
-            val fileName = File(placemark.image)
+    fun updateImage(site: SiteModel) {
+        if (site.image != "") {
+            val fileName = File(site.image)
             val imageName = fileName.getName()
 
             var imageRef = st.child(userId + '/' + imageName)
             val baos = ByteArrayOutputStream()
-            val bitmap = readImageFromPath(context, placemark.image)
+            val bitmap = readImageFromPath(context, site.image)
 
             bitmap?.let {
                 bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
@@ -102,8 +105,8 @@ class SiteFireStore(val context: Context) : SiteStore, AnkoLogger {
                     println(it.message)
                 }.addOnSuccessListener { taskSnapshot ->
                     taskSnapshot.metadata!!.reference!!.downloadUrl.addOnSuccessListener {
-                        placemark.image = it.toString()
-                        db.child("users").child(userId).child("placemarks").child(placemark.fbId).setValue(placemark)
+                        site.image = it.toString()
+                        db.child("users").child(userId).child("sites").child(site.fbId).setValue(site)
                     }
                 }
             }
