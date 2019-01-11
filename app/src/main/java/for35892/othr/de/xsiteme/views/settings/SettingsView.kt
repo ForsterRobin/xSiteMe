@@ -23,6 +23,7 @@ class SettingsView : BaseView(), AnkoLogger {
         presenter.doShowLoginData()
         presenter.doShowNumberOfSites()
         presenter.doShowNumberVisited()
+        presenter.doShowNumberFavourites()
     }
 
     override fun onBackPressed() {

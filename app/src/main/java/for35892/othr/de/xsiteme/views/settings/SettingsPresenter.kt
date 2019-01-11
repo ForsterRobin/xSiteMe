@@ -15,7 +15,6 @@ class SettingsPresenter(view: BaseView): BasePresenter(view) {
 
     fun doShowLoginData() {
         view!!.emailvalue.text = auth.currentUser?.email
-        view!!.passwordvalue.text = "******" //TODO: can't display password
     }
 
     fun doShowNumberOfSites() {
@@ -26,5 +25,10 @@ class SettingsPresenter(view: BaseView): BasePresenter(view) {
     fun doShowNumberVisited() {
         var count = app.sites.findAll().filter { it.visited }.count()
         view!!.numbervisitedvalue.text = count.toString()
+    }
+
+    fun doShowNumberFavourites() {
+        var count = app.sites.findAll().filter { it.favourite }.count()
+        view!!.numberfavouritesvalue.text = count.toString()
     }
 }
