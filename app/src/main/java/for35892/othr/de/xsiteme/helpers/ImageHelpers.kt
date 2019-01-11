@@ -6,9 +6,14 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
+import android.os.Environment
 import android.provider.MediaStore
 import for35892.othr.de.xsiteme.R
 import java.io.IOException
+import java.io.File
+import java.text.SimpleDateFormat
+import java.util.*
+
 
 fun showImagePicker(parent: Activity, id: Int) {
   val intent = Intent()
@@ -36,12 +41,27 @@ fun readImageFromPath(context: Context, path: String): Bitmap? {
   val uri = Uri.parse(path)
   if (uri != null) {
     try {
-      val parcelFileDescriptor = context.getContentResolver().openFileDescriptor(uri, "r")
-      val fileDescriptor = parcelFileDescriptor.getFileDescriptor()
+      val parcelFileDescriptor = context.contentResolver.openFileDescriptor(uri, "r")
+      val fileDescriptor = parcelFileDescriptor.fileDescriptor
       bitmap = BitmapFactory.decodeFileDescriptor(fileDescriptor)
       parcelFileDescriptor.close()
     } catch (e: Exception) {
     }
   }
   return bitmap
+}
+
+@Throws(IOException::class)
+fun createImageFile(context: Context): File {
+  val timeStamp = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())
+  val imageFileName = "IMG_" + timeStamp + "_"
+  val storageDir = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+  val image = File.createTempFile(
+    imageFileName, /* prefix */
+    ".jpg", /* suffix */
+    storageDir      /* directory */
+  )
+  println("XXX: " + storageDir)
+  val imageFilePath = image.getAbsolutePath()
+  return image
 }

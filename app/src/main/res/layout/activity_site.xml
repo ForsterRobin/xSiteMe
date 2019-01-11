@@ -136,10 +136,10 @@
         <ImageButton
                 android:id="@+id/chooseImageFromCamera"
                 android:contentDescription="@string/button_chooseImageFromCamera"
-                android:src="@drawable/ic_menu_add"
+                android:src="@drawable/ic_site_camera"
                 android:visibility="gone"
                 android:layout_width="75dp"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_marginTop="8dp"
                 app:layout_constraintStart_toStartOf="@+id/description"
                 app:layout_constraintTop_toBottomOf="@+id/additionalNotes"/>
@@ -147,10 +147,10 @@
         <ImageButton
                 android:id="@+id/chooseImageFromGallery"
                 android:contentDescription="@string/button_chooseFromGallery"
-                android:src="@drawable/ic_menu_map"
+                android:src="@drawable/ic_site_gallery"
                 android:visibility="gone"
                 android:layout_width="75dp"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_marginTop="8dp"
                 app:layout_constraintStart_toEndOf="@+id/chooseImageFromCamera"
                 app:layout_constraintTop_toBottomOf="@+id/additionalNotes"/>

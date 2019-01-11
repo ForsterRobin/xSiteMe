@@ -1,12 +1,10 @@
 package for35892.othr.de.xsiteme.views.site
 
 import android.content.Intent
-import android.net.Uri
-import android.os.Environment
 import android.provider.MediaStore
 import android.view.View
 import android.widget.RatingBar
-import for35892.othr.de.xsiteme.helpers.showImagePicker
+import for35892.othr.de.xsiteme.helpers.*
 import for35892.othr.de.xsiteme.main.MainApp
 import for35892.othr.de.xsiteme.models.Location
 import for35892.othr.de.xsiteme.models.SiteModel
@@ -16,6 +14,9 @@ import for35892.othr.de.xsiteme.views.VIEW
 import kotlinx.android.synthetic.main.activity_site.*
 import java.text.SimpleDateFormat
 import java.io.File
+import androidx.core.app.ActivityCompat.startActivityForResult
+import androidx.core.content.FileProvider
+import java.io.IOException
 
 
 class SitePresenter(view: BaseView) : BasePresenter(view) {
@@ -86,13 +87,26 @@ class SitePresenter(view: BaseView) : BasePresenter(view) {
         view!!.chooseImageFromCamera.visibility = View.GONE
         view!!.chooseImageFromGallery.visibility = View.GONE
 
-        val cameraIntent = Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE)
-        File(
-            Environment.getExternalStoragePublicDirectory("DIRECTORY_DOWNLOADS"),
-            "fname_" + System.currentTimeMillis().toString() + ".jpg"
-        )
+//        val cameraIntent = Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE)
+//        File(
+//            Environment.getExternalStoragePublicDirectory("DIRECTORY_DOWNLOADS"),
+//            "fname_" + System.currentTimeMillis().toString() + ".jpg"
+//        )
+//
+//        view!!.startActivityForResult(cameraIntent, CAMERA_REQUEST)
 
-        view!!.startActivityForResult(cameraIntent, CAMERA_REQUEST)
+        val pictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+        if (pictureIntent.resolveActivity(view!!.packageManager) != null) {
+            //Create a file to store the image
+            var photoFile = createImageFile(view!! as SiteView)
+
+            var photoURI =
+                FileProvider.getUriForFile(view!! as SiteView, "for35892.othr.de.xsiteme.provider", photoFile)
+            pictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI)
+            pictureIntent.putExtra("TEST", "test123")
+            view!!.startActivityForResult(pictureIntent, CAMERA_REQUEST)
+
+        }
     }
 
     fun doSelectImageFromGallery() {
@@ -136,14 +150,16 @@ class SitePresenter(view: BaseView) : BasePresenter(view) {
     override fun doActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
         when (requestCode) {
             IMAGE_REQUEST -> {
-                site.image = data.data.toString()
+                site.image = data.data!!.toString()
                 view?.showImage(site)
             }
             CAMERA_REQUEST -> {
-                showImagePicker(view!!, IMAGE_REQUEST)
+                //site.image = data.extras!!.getBundle("MediaStore.EXTRA_OUTPUT").toString()
+                // does not work because extras are empty, because data(intent) differs from originally intent
+                view?.showImage(site)
             }
             LOCATION_REQUEST -> {
-                val location = data.extras.getParcelable<Location>("location")
+                val location = data.extras!!.getParcelable<Location>("location")
                 site.lat = location.lat
                 site.lng = location.lng
                 site.zoom = location.zoom
